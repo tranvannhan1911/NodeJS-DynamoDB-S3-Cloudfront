@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeJS</title>
+    <style>
+        label{
+            min-width: 200px;
+        }
+
+        form > div{
+            margin-bottom: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <form action="/them-san-pham" method="POST"  enctype='multipart/form-data'> 
+                <div>
+                    <div>
+                        <label>Mã sản phẩm</label>
+                    </div>
+                    <input name="ma_sp" />
+                </div>
+                <div>
+                    <div>
+                        <label>Tên sản phẩm</label>
+                    </div>
+                    <input name="ten_sp" />
+                </div>
+                <div>
+                    <div>
+                        <label>Số lượng</label>
+                    </div>
+                    <input name="so_luong" />
+                </div>
+                <div>
+                    <div>
+                        <label>Hình ảnh</label>
+                    </div>
+                    <input name="hinh_anh" type="file" />
+                </div>
+                <div>
+                    <button type="submit">Thêm</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <table >
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Hành động</th>
+                </tr>
+                <% for(var i = 0; i<data.length; i++){ %>
+                    <tr>
+                        <td><img width="100" src="<%= data[i].hinh_anh %>"/></td>
+                        <td><%= data[i].ma_sp %></td>
+                        <td><%= data[i].ten_sp %></td>
+                        <td><%= data[i].so_luong %></td>
+                        <td><a href="/xoa-san-pham?ma_sp=<%= data[i].ma_sp %>">Xóa</a></td>
+                    </tr>
+                <% } %>
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>
